@@ -31,7 +31,7 @@
     if (isset($_SESSION['create']))
     { 
 
-        require('connect-data.php');
+       require('connect-data.php');
        $email = $_SESSION['email'];
        $password = $_SESSION['password'];
 
@@ -45,12 +45,16 @@
        $statement->closeCursor();
     }
 
-    if (isset($_POST['type']) && isset($_POST['bdrms']) && isset($_POST['bath']) && isset($_POST['location']) && isset($_POST['avail'])) {
+    if(!empty($_POST)){
     	$type = $_POST['type'];
     	$bdrms = $_POST['bdrms'];
     	$bath = $_POST['bath'];
     	$location = $_POST['location'];
     	$avail = $_POST['avail'];
+    	
+    	header('Location: results.php');
+    	
+
     }
 
 
@@ -88,6 +92,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://housing.virginia.edu/sites/housing.virginia.edu/files/styles/homepage_image/public/Lawn_header.jpg?itok=a5ZNOXAG" class="d-block w-100" alt="...">
+
             </div>
             
         </div>
@@ -98,7 +103,7 @@
 <section class="search-sec">
     <div class="container">
     
-        <form method="post" name="searchForm" action="/results.cfm">
+        <form method="post" >
 			<table id="search-table" cellpadding="0px" cellspacing="0px">
 				<tr>
 					<td id="search-sml">
@@ -153,11 +158,9 @@
 
 						</select>
 					</td>
+					
 					<td id="search-sml">
-						<input type="text" class="form-control search-slt" placeholder="Min Price"> 
-					</td>
-					<td id="search-sml">
-						<input type="text" class="form-control search-slt" placeholder="Min Price"> 
+						<input type="text" name="price" class="form-control search-slt" placeholder="Min Price"> 
 					</td>
 							<!-- <td id="search-go">
 								<a class="search-btn" href="javascript:doSearch();" >
@@ -166,7 +169,7 @@
 							</td> -->	
 					<td>
 						<div >
-                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                            <input type="submit" name="create" value="Submit" class="btn float-right login_btn">
                         </div>
                     </td>
 				</tr>
