@@ -22,6 +22,28 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+	<style type"text/css">
+		/*#my_table {
+			background-color: 	#FFA500;
+		}*/
+		#my_table {
+			border-collapse: collapse;
+			width: 100%;
+			}
+
+			th, td {
+			text-align: left;
+			padding: 8px;
+			}
+
+			tr:nth-child(even){background-color: #f2f2f2}
+
+			th {
+			background-color: #FFA500;
+			color: white;
+			}
+	</style>
+
 	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
 </head>
 <body>
@@ -46,8 +68,11 @@
             </li>
             
           </ul>
-        </div>  
+        </div> 
+
 </nav>
+
+
 <?php
   		
 		//require('connect-data.php');
@@ -67,7 +92,7 @@
 		// } else {
 		//     echo "0 results";
 		// }
-		echo "<table border='1'>
+		echo "<table id='my_table' border='1'>
 		<tr>
 		<th>Type</th>
 		<th>Price</th>
@@ -76,18 +101,20 @@
 		<th>Photo</th>
 		<th>Beds</th>
 		<th>Baths</th>
+		<th>Residents</th>
 		</tr>";
 
 		while($row = mysqli_fetch_array($result))
 		{
 		echo "<tr>";
-		echo "<td href="">" . $row['COL 1'] . "</td>";
+		echo "<td>" . $row['COL 1'] . "</td>";
 		echo "<td>" . $row['COL 2'] . "</td>";
 		echo "<td>" . $row['COL 3'] . "</td>";
 		echo "<td>" . $row['COL 4'] . "</td>";
-		echo "<td>" . $row['COL 5'] . "</td>";
+		echo "<td> <img src='".$row['COL 5']."'>" . "</td>";
 		echo "<td>" . $row['COL 6'] . "</td>";
 		echo "<td>" . $row['COL 7'] . "</td>";
+		echo "<td> <a href='directory.html'> Current Residents</a></td>";
 		echo "</tr>";
 		}
 		echo "</table>";
